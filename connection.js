@@ -1,10 +1,12 @@
+//Include the mysql module
 var mysql = require('mysql');
 function Connection() {
     this.pool = null;
 
+    //Create a connection pool
     this.init = function() {
       this.pool = mysql.createPool({
-        connectionLimit: 10,
+        connectionLimit: 10,//Limiting the maximum connections to 10
         host: 'dev85.netsapiens.com',
         user: 'dbSiPbx',
         password: 'sipbx',

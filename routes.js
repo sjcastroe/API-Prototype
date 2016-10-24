@@ -1,5 +1,7 @@
 var phonenumber = require('./model/phonenumber');
 
+
+//Each route is an HTTP method (verb) with a specific URL endpoint (noun)
 module.exports = {
   configure: function(app) {
     app.get('/phonenumber/', function(req, res){
