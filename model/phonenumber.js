@@ -1,10 +1,10 @@
 var connection = require('../connection');
 
 function Phonenumber() {
-  this.get = function(res) {
+  this.get = function(matchrule, res) {
     //Acquire the connection, execute the query and send back the results as the response
     connection.acquire(function(err, con) {
-      con.query('select * from dialplan_config', function(err, result) {
+      con.query('select * from dialplan_config where matchrule = ?', [matchrule], function(err, result) {
         con.release();
         res.send(result);
       });
@@ -30,7 +30,7 @@ function Phonenumber() {
     connection.acquire(function(err, con) {
       //Phonenumber specifies the columns to update
       //Phonenumber.id specifies the condition to be matched
-      con.query('update dialplan_config set ? where id = ?', [phonenumber, phonenumber.id], function(err, result) {
+      con.query('update dialplan_config set ? where matchrule = ?', [phonenumber, phonenumber.matchrule], function(err, result) {
         con.release();
         if (err) {
           res.send({status: 1, message: 'PHONENUMBER update failed'});
@@ -41,9 +41,9 @@ function Phonenumber() {
     });
   };
 
-  this.delete = function(id, res) {
+  this.delete = function(matchrule, res) {
     connection.acquire(function(err, con) {
-      con.query('delete from dialplan_config where id = ?', [id], function(err, result) {
+      con.query('delete from dialplan_config where matchrule = ?', [matchrule], function(err, result) {
         con.release();
         if (err) {
           res.send({status: 1, message: 'Failed to delete'});

@@ -4,8 +4,8 @@ var phonenumber = require('./model/phonenumber');
 //Each route is an HTTP method (verb) with a specific URL endpoint (noun)
 module.exports = {
   configure: function(app) {
-    app.get('/phonenumber/', function(req, res){
-      phonenumber.get(res);
+    app.get('/phonenumber/:matchrule', function(req, res){
+      phonenumber.get(req.params.matchrule, res);
     });
 
     app.post('/phonenumber/', function(req, res) {
@@ -16,8 +16,8 @@ module.exports = {
       phonenumber.update(req.body, res);
     });
 
-    app.delete('/phonenumber/', function(req, res) {
-      phonenumber.delete(req.params.id, res);
+    app.delete('/phonenumber/:matchrule', function(req, res) {
+      phonenumber.delete(req.params.matchrule, res);
     });
   }
 };
