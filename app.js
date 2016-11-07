@@ -1,22 +1,34 @@
 /*
-  Starting point for the application. Creates the express server.
+    app.js
+
+    STARTING POINT FOR THE APPLICATION. CREATES THE EXPRESS SERVER.
+
+  ============================================================================
 */
 
-//Include the required modules
+//Include the required modules/packages
 var express = require('express');
 var bodyparser = require('body-parser');
 var connection = require('./connection');
 var routes = require('./routes');
 
-//Create the express app
+//Define our express app
 var app = express();
 
-//Configure the body parser to accept POST requests
+//Configure our app to use the body parser package
+//This package allows us to parse and easily access POST request data
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
+//Connect to mysql database (connection.js)
 connection.init();
-routes.configure(app);
+
+//Configure routes (routes.js)
+
+//Application-level middleware
+//Mount the routes Router as middleware for the subpath ns-api/test
+app.use('/ns-api', routes);
+//routes.configure(app);
 
 //Configure port 8000 to receive requests
 var server = app.listen(8000, function() {

@@ -1,3 +1,12 @@
+/*
+    routes.js
+
+    DEFINES THE API'S ROUTES FOR EACH MODEL
+
+  ============================================================================
+*/
+
+//Include all of our models
 var phonenumber = require('./model/phonenumber');
 
 
