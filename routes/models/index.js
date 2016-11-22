@@ -4,9 +4,9 @@ const single = require('./single');
 const cars = require('./cars');
 const findObject = require('../../utils/findObject');
 
+//Attach callback findObject to modelId parameter.
+//findObject verifies that a request is valid (else, return 404)
 models.param('modelId', findObject('model'));
-
-models.use('/:modelId/cars', cars);
 
 models.get('/', all);
 
