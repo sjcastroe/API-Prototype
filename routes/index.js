@@ -1,12 +1,8 @@
-/*
-    routes/index.js
+/****************************************
+ * Root file for all routes in the app. *
+ ****************************************/
 
-    ROOT FILE FOR ALL ROUTES.
-
-  ============================================================================
-*/
-
-//We create a new instance of Router in Express
+//We create a new instance of Router in express
 const routes = require('express').Router();
 const models = require('./models');
 const cars = require('./cars');

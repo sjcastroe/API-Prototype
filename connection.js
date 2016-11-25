@@ -1,3 +1,7 @@
+/*******************************************************************
+ * Create a connection to a mysql database using the mysql module. *
+ *******************************************************************/
+
 //Include the mysql module
 var mysql = require('mysql');
 

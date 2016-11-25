@@ -1,10 +1,6 @@
-/*
-    app.js
-
-    STARTING POINT FOR THE APPLICATION. CREATES THE EXPRESS SERVER.
-
-  ============================================================================
-*/
+/**********************************************************************************
+ * Starting point for the application. Creates and configures the express server.
+ **********************************************************************************/
 
 //Include the required modules/packages
 var express = require('express');
@@ -26,7 +22,9 @@ app.use(bodyparser.json());
 connection.init();
 
 //Application-level middleware
-//(Middleware: functions that have access to the request object, response object, and the next middleware function)
+//(Middleware: A function that is executed in a route path. The function has access
+//to the request and response objects. It also has access to the next middleware function
+//in the route in case it doesn't return a response itself.)
 //Mount the routes Router as middleware for the subpath /ns-api/
 app.use('/ns-api', routes);
 
