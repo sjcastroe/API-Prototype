@@ -26,9 +26,9 @@ connection.init();
 //to the request and response objects. It also has access to the next middleware function
 //in the route in case it doesn't return a response itself.)
 //Mount the routes Router as middleware for the subpath /ns-api/
-//app.use('/ns-api', routes);
+app.use('/ns-api', routes);
 
 //Configure port 8000 to receive requests
-var server = app.listen(8000, function() {
+var server = app.listen(8000, () => {
     console.log('Server listening on port ' + server.address().port);
 })
