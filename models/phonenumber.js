@@ -11,6 +11,15 @@ class Phonenumber {
     });
   };
 
+  readCollection (res) {
+    connection.acquire(function(err, con) {
+      con.query('select * from dialplan_config', function(err, result) {
+        con.release();
+        res.send(result);
+      });
+    });
+  }
+
   create (phonenumber, res) {
     connection.acquire(function(err, con) {
       //Keys of Phonenumber object will be mapped to the column names in the dialplan_config table, values will be set when query is executed

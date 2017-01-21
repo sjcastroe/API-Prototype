@@ -1,25 +1,27 @@
-const phonenumbers = require('express').Router();
+const phonenumber = require('express').Router();
 const model = require('../../models/phonenumber');
 //const findObject = require('../../utils/findObject');
 
-//phonenumbers.param('matchrule', findObject('car'));
+//phonenumber.param('matchrule', findObject('car'));
 
-//phonenumbers.get('/', model.read);
+phonenumber.get('/', (req, res) => {
+  model.readCollection(res);
+});
 
-phonenumbers.get('/phonenumber/:matchrule', (req, res) => {
+phonenumber.get('/:matchrule', (req, res) => {
   model.read(req.params.matchrule, res);
 });
 
-phonenumbers.post('/phonenumber/', (req, res) => {
+phonenumber.post('/', (req, res) => {
   model.create(req.body, res);
 });
 
-phonenumbers.put('/phonenumber/', (req, res) => {
-  phonenumber.update(req.body, res);
+phonenumber.put('/', (req, res) => {
+  model.update(req.body, res);
 });
 
-phonenumbers.delete('/phonenumber/:matchrule', (req, res) => {
-  phonenumber.delete(req.params.matchrule, res);
+phonenumber.delete('/:matchrule', (req, res) => {
+  model.delete(req.params.matchrule, res);
 });
 
-module.exports = phonenumbers;
+module.exports = phonenumber;
