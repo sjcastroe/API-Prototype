@@ -5,6 +5,7 @@
 //Include the required modules/packages
 var express = require('express');
 var bodyparser = require('body-parser');
+var morgan = require('morgan');
 var connection = require('./connection');
 var routes = require('./routes');
 
@@ -18,13 +19,12 @@ app.use(bodyparser.urlencoded({
 }));
 app.use(bodyparser.json());
 
+//Enable logging of request data on the console
+app.use(morgan('dev'));
+
 //Connect to mysql database (connection.js)
 connection.init();
 
-//Application-level middleware
-//(Middleware: A function that is executed in a route path. The function has access
-//to the request and response objects. It also has access to the next middleware function
-//in the route in case it doesn't return a response itself.)
 //Mount the routes Router as middleware for the subpath /ns-api/
 app.use('/ns-api', routes);
 
