@@ -9,6 +9,8 @@ var morgan = require('morgan');
 var connection = require('./connection');
 var routes = require('./routes');
 
+import connection from './connection'
+
 //Define our express app
 var app = express();
 
@@ -29,6 +31,6 @@ connection.init();
 app.use('/ns-api', routes);
 
 //Configure port 8000 to receive requests
-var server = app.listen(8000, () => {
+var server = app.listen(3000, () => {
     console.log('Server listening on port ' + server.address().port);
 })
