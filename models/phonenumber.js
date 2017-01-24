@@ -1,6 +1,8 @@
 var connection = require('../connection');
+import Model from './model'
 
-class Phonenumber {
+export default class Phonenumber extends Model {
+
   read (matchrule, res) {
     //Acquire the connection, execute the query and send back the results as the response
     connection.acquire(function(err, con) {
@@ -63,4 +65,3 @@ class Phonenumber {
     });
   };
 }
-module.exports = new Phonenumber();
