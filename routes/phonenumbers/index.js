@@ -1,6 +1,6 @@
 const router = require('express').Router();
 import Phonenumber from '../../models/phonenumber'
-import Database from '../../models/database'
+import Database from '../../database'
 //const findObject = require('../../utils/findObject');
 
 //phonenumber.param('matchrule', findObject('car'));

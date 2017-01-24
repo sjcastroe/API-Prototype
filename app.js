@@ -6,7 +6,6 @@
 var express = require('express');
 var bodyparser = require('body-parser');
 var morgan = require('morgan');
-var connection = require('./connection');
 var routes = require('./routes');
 
 import connection from './connection'
@@ -31,6 +30,6 @@ connection.init();
 app.use('/ns-api', routes);
 
 //Configure port 8000 to receive requests
-var server = app.listen(3000, () => {
+var server = app.listen(8000, () => {
     console.log('Server listening on port ' + server.address().port);
 })

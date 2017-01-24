@@ -1,11 +1,7 @@
-import Database from '../database'
+import database from '../database'
 
 export default class Model {
   constructor (db) {
-    this.database = db;
-  }
-
-  show () {
-    return this.database;
+    this.database = db
   }
 }

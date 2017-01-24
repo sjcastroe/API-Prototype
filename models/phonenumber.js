@@ -2,7 +2,7 @@ var connection = require('../connection');
 import Model from './model'
 
 export default class Phonenumber extends Model {
-
+  /*
   read (matchrule, res) {
     //Acquire the connection, execute the query and send back the results as the response
     connection.acquire(function(err, con) {
@@ -64,4 +64,5 @@ export default class Phonenumber extends Model {
       });
     });
   };
+  */
 }
