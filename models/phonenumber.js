@@ -1,4 +1,4 @@
-var connection = require('../connection');
+var connection = require('../database/connections');
 import Model from './model'
 
 export default class Phonenumber extends Model {

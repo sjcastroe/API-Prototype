@@ -8,7 +8,7 @@ var bodyparser = require('body-parser');
 var morgan = require('morgan');
 var routes = require('./routes');
 
-import connection from './connection'
+import connections from './database/connections'
 
 //Define our express app
 var app = express();
@@ -24,12 +24,13 @@ app.use(bodyparser.json());
 app.use(morgan('dev'));
 
 //Connect to mysql database (connection.js)
-connection.init();
+connections.init();
+//console.log(connections.pool.config.connectionConfig)
 
 //Mount the routes Router as middleware for the subpath /ns-api/
 app.use('/ns-api', routes);
 
 //Configure port 8000 to receive requests
-var server = app.listen(8000, () => {
+var server = app.listen(3000, () => {
     console.log('Server listening on port ' + server.address().port);
 })

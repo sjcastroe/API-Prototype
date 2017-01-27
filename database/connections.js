@@ -5,7 +5,7 @@
 //Include the mysql module
 var mysql = require('mysql');
 
-class Connection {
+class Connections {
   constructor () {
     /** @var {Pool} A connection pool. A cache of database connections that makes it easy to share connections between requests.*/
     this.pool = null;
@@ -15,6 +15,7 @@ class Connection {
    * Constructs a Connection object by initializing the internal pool variable.
    */
   init () {
+    //console.log('connections init')
     this.pool = mysql.createPool({
         connectionLimit: 10, //Limit the maximum connections to 10
         host: 'corp.netsapiens.com',
@@ -29,10 +30,11 @@ class Connection {
    * @param  {Function} callback Connection handler. Should release the connection after it is done using it.
    */
   acquire (callback) {
-    this.pool.getConnection(function(err, connection) {
-        callback(err, connection);
+    //console.log('connections acquire')
+    this.pool.getConnection((error, connection) => {
+        callback(connection, error);
     });
   }
 }
 
-export default (new Connection)
+export default (new Connections)
