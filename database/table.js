@@ -1,7 +1,7 @@
 export default class Table {
   constructor (name, primary) {
-    this._name = name;
-    this._primary = primary;
+    this._name = name
+    this._primary = primary
   }
 
   get name () {

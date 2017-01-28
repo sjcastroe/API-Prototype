@@ -15,7 +15,6 @@ class Connections {
    * Constructs a Connection object by initializing the internal pool variable.
    */
   init () {
-    //console.log('connections init')
     this.pool = mysql.createPool({
         connectionLimit: 10, //Limit the maximum connections to 10
         host: 'corp.netsapiens.com',
@@ -30,7 +29,6 @@ class Connections {
    * @param  {Function} callback Connection handler. Should release the connection after it is done using it.
    */
   acquire (callback) {
-    //console.log('connections acquire')
     this.pool.getConnection((error, connection) => {
         callback(connection, error);
     });

@@ -1,34 +1,30 @@
-const router = require('express').Router();
+const router = require('express').Router()
 import Phonenumber from '../../models/phonenumber'
 import Database from '../../database/database'
 import Table from '../../database/table'
-//const findObject = require('../../utils/findObject');
+//const findObject = require('../../utils/findObject')
 
-//phonenumber.param('matchrule', findObject('car'));
-var database = new Database();
-//console.log(database.db)
-var phonenumber = new Phonenumber(database);
+//phonenumber.param('matchrule', findObject('car'))
 
+
+var database = new Database()
 var table = new Table('dialplan_config', 'matchrule')
-
-router.get('/', (req, res) => {
-  database.select(table, { matchrule: 'sip:8587645237@*'})
-});
+var phonenumber = new Phonenumber(database, table)
 
 router.get('/:matchrule', (req, res) => {
-  model.read(req.params.matchrule, res);
-});
+  phonenumber.read(req.params.matchrule, res)
+})
 
 router.post('/', (req, res) => {
-  model.create(req.body, res);
-});
+  phonenumber.create(req.body, res)
+})
 
-router.put('/', (req, res) => {
-  model.update(req.body, res);
-});
+router.put('/:matchrule', (req, res) => {
+  phonenumber.update(Object.assign({ matchrule: req.params.matchrule }, req.body), res)
+})
 
 router.delete('/:matchrule', (req, res) => {
-  model.delete(req.params.matchrule, res);
-});
+  phonenumber.delete(req.params.matchrule, res)
+})
 
-module.exports = router;
+module.exports = router
